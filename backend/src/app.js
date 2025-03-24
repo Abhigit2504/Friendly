@@ -12,34 +12,9 @@ const userRouter = require("./routes/user.js");
 const initializeSocket = require("./utils/socket.js");
 const chatRouter = require("./routes/chat.js");
 
-app.use(
-  cors({
-    origin: "http://localhost:5173", // cors 
-    methods: ["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
-    credentials: true,
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
-);
+app.use(cors());
 
 // Middleware to handle preflight requests
-app.options("*", (req, res) => {
-  console.log("Handling OPTIONS request for ", req.url);
-  res.header(
-    "Access-Control-Allow-Origin",
-    "http://localhost:5173" ||
-      "http://localhost:5174 || https://dev-book-alpha.vercel.app/"
-  );
-  res.header(
-    "Access-Control-Allow-Methods",
-    "GET, POST, PATCH, DELETE, OPTIONS"
-  ); // Ensure PATCH is included
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-  );
-  res.header("Access-Control-Allow-Credentials", "true");
-  res.sendStatus(200);
-});
 
 app.use(express.json());
 app.use(cookieParser());
