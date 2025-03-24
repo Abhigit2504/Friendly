@@ -12,11 +12,7 @@ const userRouter = require("./routes/user.js");
 const initializeSocket = require("./utils/socket.js");
 const chatRouter = require("./routes/chat.js");
 
-app.use(cors({
-  origin: "*",  // Allow all origins
-  methods: ["GET", "POST", "PUT", "DELETE"], // Allowed methods
-  allowedHeaders: ["Content-Type", "Authorization"] // Allowed headers
-}));
+app.use(cors());
 
 // Middleware to handle preflight requests
 
